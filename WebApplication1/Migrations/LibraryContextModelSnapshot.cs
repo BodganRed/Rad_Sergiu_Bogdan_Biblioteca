@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Models;
+using WebApplication1.Data;
 
 #nullable disable
 
@@ -74,9 +74,6 @@ namespace WebApplication1.Migrations
 
                     b.Property<int?>("GenreID")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsFeatured")
-                        .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(10, 2)

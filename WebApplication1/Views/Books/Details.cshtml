@@ -1,51 +1,55 @@
-@model WebApplication1.Models.Book
+﻿@model WebApplication1.Models.Book
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalii carte";
 }
 
-<h1>Details</h1>
+<h1>Detalii carte</h1>
 
 <div>
-    <h4>Book</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GenreID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GenreID)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Title)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.Title)</dd>
+
+        <dt class="col-sm-2">Autor</dt>
+        <dd class="col-sm-10">@Model.Author?.FullName</dd>
+
+        <dt class="col-sm-2">Gen</dt>
+        <dd class="col-sm-10">@Model.Genre?.Name</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Year)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.Year)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Price)</dt>
+        <dd class="col-sm-10">@Model.Price.ToString("0.00")</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Description)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.Description)</dd>
+
+        <dt class="col-sm-2">Comenzi</dt>
+        <dd class="col-sm-10">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Cititor</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var o in Model.Orders.OrderByDescending(o => o.OrderDate))
+                {
+                    <tr>
+                        <td>@o.Customer.Name</td>
+                        <td>@o.OrderDate.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
         </dd>
     </dl>
 </div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>

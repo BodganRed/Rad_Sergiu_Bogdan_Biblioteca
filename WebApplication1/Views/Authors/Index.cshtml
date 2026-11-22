@@ -5,24 +5,23 @@
 }
 
 <h1>Autori</h1>
+<p><a asp-action="Create">Adaugă autor nou</a></p>
 
-<p>
-    <a asp-action="Create">Adaugă autor nou</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
-            <th>@Html.DisplayNameFor(model => model.LastName)</th>
-            <th>FullName</th>
+            <th>@Html.DisplayNameFor(m => m.FirstName)</th>
+            <th>@Html.DisplayNameFor(m => m.LastName)</th>
+            <th>Nume complet</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+            <td>@Html.DisplayFor(m => item.FirstName)</td>
+            <td>@Html.DisplayFor(m => item.LastName)</td>
             <td>@Html.DisplayFor(m => item.FullName)</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

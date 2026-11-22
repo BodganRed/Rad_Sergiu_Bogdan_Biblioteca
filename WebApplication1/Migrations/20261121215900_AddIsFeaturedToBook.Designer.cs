@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using WebApplication1.Data;
 using WebApplication1.Models;
 
 #nullable disable
@@ -26,233 +27,233 @@ namespace WebApplication1.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("BookPublisher", b =>
-                {
-                    b.Property<int>("BooksID")
-                        .HasColumnType("int");
+            {
+                b.Property<int>("BooksID")
+                    .HasColumnType("int");
 
-                    b.Property<int>("PublishersID")
-                        .HasColumnType("int");
+                b.Property<int>("PublishersID")
+                    .HasColumnType("int");
 
-                    b.HasKey("BooksID", "PublishersID");
+                b.HasKey("BooksID", "PublishersID");
 
-                    b.HasIndex("PublishersID");
+                b.HasIndex("PublishersID");
 
-                    b.ToTable("BookPublisher");
-                });
+                b.ToTable("BookPublisher");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Author", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("FirstName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("LastName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                b.HasKey("ID");
 
-                    b.ToTable("Author");
-                });
+                b.ToTable("Author");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Book", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int?>("AuthorID")
-                        .HasColumnType("int");
+                b.Property<int?>("AuthorID")
+                    .HasColumnType("int");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Description")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GenreID")
-                        .HasColumnType("int");
+                b.Property<int?>("GenreID")
+                    .HasColumnType("int");
 
-                    b.Property<bool>("IsFeatured")
-                        .HasColumnType("bit");
+                b.Property<bool>("IsFeatured")
+                    .HasColumnType("bit");
 
-                    b.Property<decimal>("Price")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                b.Property<decimal>("Price")
+                    .HasPrecision(10, 2)
+                    .HasColumnType("decimal(10,2)");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Title")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
+                b.Property<int>("Year")
+                    .HasColumnType("int");
 
-                    b.HasKey("ID");
+                b.HasKey("ID");
 
-                    b.HasIndex("AuthorID");
+                b.HasIndex("AuthorID");
 
-                    b.HasIndex("GenreID");
+                b.HasIndex("GenreID");
 
-                    b.ToTable("Book");
-                });
+                b.ToTable("Book");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Customer", b =>
-                {
-                    b.Property<int>("CustomerID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("CustomerID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerID"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerID"));
 
-                    b.Property<string>("Adress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Adress")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("BirthDate")
+                    .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CustomerID");
+                b.HasKey("CustomerID");
 
-                    b.ToTable("Customer");
-                });
+                b.ToTable("Customer");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Genre", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                b.HasKey("ID");
 
-                    b.ToTable("Genre");
-                });
+                b.ToTable("Genre");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Order", b =>
-                {
-                    b.Property<int>("OrderID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("OrderID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
-                    b.Property<int>("BookID")
-                        .HasColumnType("int");
+                b.Property<int>("BookID")
+                    .HasColumnType("int");
 
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
+                b.Property<int>("CustomerID")
+                    .HasColumnType("int");
 
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("OrderDate")
+                    .HasColumnType("datetime2");
 
-                    b.HasKey("OrderID");
+                b.HasKey("OrderID");
 
-                    b.HasIndex("BookID");
+                b.HasIndex("BookID");
 
-                    b.HasIndex("CustomerID");
+                b.HasIndex("CustomerID");
 
-                    b.ToTable("Order");
-                });
+                b.ToTable("Order");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Publisher", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                b.HasKey("ID");
 
-                    b.ToTable("Publisher");
-                });
+                b.ToTable("Publisher");
+            });
 
             modelBuilder.Entity("BookPublisher", b =>
-                {
-                    b.HasOne("WebApplication1.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("WebApplication1.Models.Book", null)
+                    .WithMany()
+                    .HasForeignKey("BooksID")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("WebApplication1.Models.Publisher", null)
-                        .WithMany()
-                        .HasForeignKey("PublishersID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                b.HasOne("WebApplication1.Models.Publisher", null)
+                    .WithMany()
+                    .HasForeignKey("PublishersID")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Book", b =>
-                {
-                    b.HasOne("WebApplication1.Models.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorID");
+            {
+                b.HasOne("WebApplication1.Models.Author", "Author")
+                    .WithMany("Books")
+                    .HasForeignKey("AuthorID");
 
-                    b.HasOne("WebApplication1.Models.Genre", "Genre")
-                        .WithMany("Books")
-                        .HasForeignKey("GenreID");
+                b.HasOne("WebApplication1.Models.Genre", "Genre")
+                    .WithMany("Books")
+                    .HasForeignKey("GenreID");
 
-                    b.Navigation("Author");
+                b.Navigation("Author");
 
-                    b.Navigation("Genre");
-                });
+                b.Navigation("Genre");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Order", b =>
-                {
-                    b.HasOne("WebApplication1.Models.Book", "Book")
-                        .WithMany("Orders")
-                        .HasForeignKey("BookID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("WebApplication1.Models.Book", "Book")
+                    .WithMany("Orders")
+                    .HasForeignKey("BookID")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("WebApplication1.Models.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasOne("WebApplication1.Models.Customer", "Customer")
+                    .WithMany("Orders")
+                    .HasForeignKey("CustomerID")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Book");
+                b.Navigation("Book");
 
-                    b.Navigation("Customer");
-                });
+                b.Navigation("Customer");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Author", b =>
-                {
-                    b.Navigation("Books");
-                });
+            {
+                b.Navigation("Books");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Book", b =>
-                {
-                    b.Navigation("Orders");
-                });
+            {
+                b.Navigation("Orders");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Customer", b =>
-                {
-                    b.Navigation("Orders");
-                });
+            {
+                b.Navigation("Orders");
+            });
 
             modelBuilder.Entity("WebApplication1.Models.Genre", b =>
-                {
-                    b.Navigation("Books");
-                });
+            {
+                b.Navigation("Books");
+            });
 #pragma warning restore 612, 618
         }
     }
